@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <head>
     <style>
         table {
@@ -17,6 +18,7 @@
         th,
         .row,
         .col {
+            cursor: pointer;
             border: 1px solid #ccc;
             /*padding: 10px;*/
             position: relative;
@@ -32,11 +34,10 @@
             width: 50px;
             height: 20px;
         }
-        
-        td:hover::before,
+        /*td:hover::before,
         .row:hover::before {
             background-color: #ffa;
-            content: '\00a0';
+            content: "";
             height: 100%;
             left: -5000px;
             position: absolute;
@@ -48,65 +49,146 @@
         td:hover::after,
         .col:hover::after {
             background-color: #ffa;
-            content: '\00a0';
+            content: "";
             height: 10000px;
             left: 0;
             position: absolute;
             top: -5000px;
             width: 100%;
             z-index: -1;
+        }*/
+        
+        .hover {
+            background-color: #ffa;
         }
         
         .right {
             overflow: auto;
         }
-        .s0{
+        
+        .s0 {
             font-weight: bold;
             color: white;
         }
-        .s1{
+        
+        .s1 {
             background-color: rgba(63, 191, 63, 0.5);
         }
-        .s2{
+        
+        .s2 {
             background-color: rgba(250, 15, 15, 0.5);
         }
     </style>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+    <script>
+        $(function() {
+
+    $("table").delegate('td','mouseover mouseleave', function(e) {
+        if (e.type == 'mouseover') {
+          $(this).parent().addClass("hover");
+          $("colgroup").eq($(this).index()).addClass("hover");
+        } else {
+          $(this).parent().removeClass("hover");
+          $("colgroup").eq($(this).index()).removeClass("hover");
+        }
+    });
+
+});
+    </script>
 </head>
 
 <body>
     <div>
         <div class="headcol">
             <table>
-                <tr><td class="s0"><font color="black">Att\Def</font></td></tr>
-                <tr><td class="s0" bgcolor=YellowGreen>Bug</td></tr>
-                <tr><td class="s0" bgcolor=SaddleBrown>Dark</td></tr>
-                <tr><td class="s0" bgcolor=Orange>Dragon</td></tr>
-                <tr><td class="s0" bgcolor=Gold>Electric</td></tr>
-                <tr><td class="s0" bgcolor=LightPink >Fairy</td></tr>
-                <tr><td class="s0" bgcolor=DarkRed>Fighting</td></tr>
-                <tr><td class="s0" bgcolor=Red>Fire</td></tr>
-                <tr><td class="s0" bgcolor=LightBlue>Flying</td></tr>
-                <tr><td class="s0" bgcolor=LightPurple>Ghost</td></tr>
-                <tr><td class="s0" bgcolor=Green>Grass</td></tr>
-                <tr><td class="s0" bgcolor=SandyBrown>Ground</td></tr>
-                <tr><td class="s0" bgcolor=PowderBlue>Ice</td></tr>
-                <tr><td class="s0" bgcolor=Gainsboro>Normal</td></tr>
-                <tr><td class="s0" bgcolor=Purple>Poison</td></tr>
-                <tr><td class="s0" bgcolor=Magenta>Psychic</td></tr>
-                <tr><td class="s0" bgcolor=DimGray>Rock</td></tr>
-                <tr><td class="s0" bgcolor=LightSteelBlue >Steel</td></tr>
-                <tr><td class="s0" bgcolor=LightSkyBlue >Water</td></tr>
+                <tr>
+                    <td class="s0">
+                        <font color="black">Att\Def</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=YellowGreen>Bug</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=SaddleBrown>Dark</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Orange>Dragon</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Gold>Electric</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=LightPink>Fairy</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=DarkRed>Fighting</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Red>Fire</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=LightBlue>Flying</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=LightPurple>Ghost</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Green>Grass</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=SandyBrown>Ground</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=PowderBlue>Ice</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Gainsboro>Normal</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Purple>Poison</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=Magenta>Psychic</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=DimGray>Rock</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=LightSteelBlue>Steel</td>
+                </tr>
+                <tr>
+                    <td class="s0" bgcolor=LightSkyBlue>Water</td>
+                </tr>
             </table>
         </div>
         <div class="right">
             <table>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
 
                 <tr style='height:20px;'>
                     <td class="s0" bgcolor=YellowGreen>Bug</td>
                     <td class="s0" bgcolor=SaddleBrown>Dark</td>
                     <td class="s0" bgcolor=Orange>Dragon</td>
                     <td class="s0" bgcolor=Gold>Electric</td>
-                    <td class="s0" bgcolor=LightPink >Fairy</td>
+                    <td class="s0" bgcolor=LightPink>Fairy</td>
                     <td class="s0" bgcolor=DarkRed>Fighting</td>
                     <td class="s0" bgcolor=Red>Fire</td>
                     <td class="s0" bgcolor=LightBlue>Flying</td>
@@ -118,8 +200,8 @@
                     <td class="s0" bgcolor=Purple>Poison</td>
                     <td class="s0" bgcolor=Magenta>Psychic</td>
                     <td class="s0" bgcolor=DimGray>Rock</td>
-                    <td class="s0" bgcolor=LightSteelBlue >Steel</td>
-                    <td class="s0" bgcolor=LightSkyBlue >Water</td>
+                    <td class="s0" bgcolor=LightSteelBlue>Steel</td>
+                    <td class="s0" bgcolor=LightSkyBlue>Water</td>
                 </tr>
                 <tr style='height:20px;'>
                     <td></td>
