@@ -1,449 +1,525 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-table {
-    border-spacing: 1;
-    border-collapse: collapse;
-    overflow: hidden;
-    z-index: 1;
-}
-
-td, th, .row, .col {
-border: 1px solid #ccc;
-    cursor: pointer;
-    padding: 10px;
-    position: relative;
-}
-
-td:hover::before,
-.row:hover::before { 
-    background-color: #ffa;
-    content: '\00a0';  
-    height: 100%;
-    left: -5000px;
-    position: absolute;  
-    top: 0;
-    width: 10000px;   
-    z-index: -1;        
-}
-
-td:hover::after,
-.col:hover::after { 
-    background-color: #ffa;
-    content: '\00a0';  
-    height: 10000px;    
-    left: 0;
-    position: absolute;  
-    top: -5000px;
-    width: 100%;
-    z-index: -1;        
-}
-</style>
+    <style>
+        table {
+            border-spacing: 1;
+            border-collapse: collapse;
+            overflow: hidden;
+            z-index: 1;
+            float: left;
+            font-size: 10pt;
+        }
+        
+        td,
+        th,
+        .row,
+        .col {
+            border: 1px solid #ccc;
+            /*padding: 10px;*/
+            position: relative;
+        }
+        
+        td {
+            border: 1px solid #ccc;
+            min-width: 50px;
+            height: 20px;
+        }
+        
+        th {
+            width: 50px;
+            height: 20px;
+        }
+        
+        td:hover::before,
+        .row:hover::before {
+            background-color: #ffa;
+            content: '\00a0';
+            height: 100%;
+            left: -5000px;
+            position: absolute;
+            top: 0;
+            width: 10000px;
+            z-index: -1;
+        }
+        
+        td:hover::after,
+        .col:hover::after {
+            background-color: #ffa;
+            content: '\00a0';
+            height: 10000px;
+            left: 0;
+            position: absolute;
+            top: -5000px;
+            width: 100%;
+            z-index: -1;
+        }
+        
+        .right {
+            overflow: auto;
+        }
+        .s0{
+            font-weight: bold;
+        }
+        .s1{
+            background-color: rgba(63, 191, 63, 0.5);
+        }
+        .s2{
+            background-color: rgba(250, 15, 15, 0.5);
+        }
+    </style>
 </head>
+
 <body>
-<table>
-    <tr>
-        <th>Att\Def</th>
-        <td>Bug</td>
-        <td>Dark</td>
-        <td>Dragon</td>
-        <td>Electric</td>
-        <td>Fairy</td>
-        <td>Fighting</td>
-        <td>Fire</td>
-        <td>Flying</td>
-        <td>Ghost</td>
-        <td>Grass</td>
-        <td>Ground</td>
-        <td>Ice</td>
-        <td>Normal</td>
-        <td>Poison</td>
-        <td>Psychic</td>
-        <td>Rock</td>
-        <td>Steel</td>
-        <td>Water</td>
-    </tr>
-    <tr>
-        <th>Bug</th>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Dark</th>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Dragon</th>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Electric</th>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-    </tr>
-    <tr>
-        <th>Fairy</th>
-        <td></td>
-        <td>1.25</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Fighting</th>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td>1.25</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Fire</th>
-        <td>1.25</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td>0.8</td>
-    </tr>
-    <tr>
-        <th>Flying</th>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Ghost</th>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Grass</th>
-        <td>0.8</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td>1.25</td>
-    </tr>
-    <tr>
-        <th>Ground</th>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td>1.25</td>
-        <td>1.25</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Ice</th>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td>1.25</td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-    </tr>
-    <tr>
-        <th>Normal</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Poison</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td>0.8</td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Psychic</th>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Rock</th>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-    </tr>
-    <tr>
-        <th>Steel</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td>0.8</td>
-        <td>0.8</td>
-    </tr>
-    <tr>
-        <th>Water</th>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td>0.8</td>
-        <td>1.25</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>1.25</td>
-        <td></td>
-        <td>0.8</td>
-    </tr>
-</table>
+    <div>
+        <div class="headcol">
+            <table>
+                <tr>
+                    <th>Att\Def</th>
+                </tr>
+                <tr>
+                    <th>Bug</th>
+                </tr>
+                <tr>
+                    <th>Dark</th>
+                </tr>
+                <tr>
+                    <th>Dragon</th>
+                </tr>
+                <tr>
+                    <th>Electric</th>
+                </tr>
+                <tr>
+                    <th>Fairy</th>
+                </tr>
+                <tr>
+                    <th>Fighting</th>
+                </tr>
+                <tr>
+                    <th>Fire</th>
+                </tr>
+                <tr>
+                    <th>Flying</th>
+                </tr>
+                <tr>
+                    <th>Ghost</th>
+                </tr>
+                <tr>
+                    <th>Grass</th>
+                </tr>
+                <tr>
+                    <th>Ground</th>
+                </tr>
+                <tr>
+                    <th>Ice</th>
+                </tr>
+                <tr>
+                    <th>Normal</th>
+                </tr>
+                <tr>
+                    <th>Poison</th>
+                </tr>
+                <tr>
+                    <th>Psychic</th>
+                </tr>
+                <tr>
+                    <th>Rock</th>
+                </tr>
+                <tr>
+                    <th>Steel</th>
+                </tr>
+                <tr>
+                    <th>Water</th>
+                </tr>
+            </table>
+        </div>
+        <div class="right">
+            <table>
 
+                <tr style='height:20px;'>
+                    <td class="s0" dir="ltr">Bug</td>
+                    <td class="s0" dir="ltr">Dark</td>
+                    <td class="s0" dir="ltr">Dragon</td>
+                    <td class="s0" dir="ltr">Electric</td>
+                    <td class="s0" dir="ltr">Fairy</td>
+                    <td class="s0" dir="ltr">Fighting</td>
+                    <td class="s0" dir="ltr">Fire</td>
+                    <td class="s0" dir="ltr">Flying</td>
+                    <td class="s0" dir="ltr">Ghost</td>
+                    <td class="s0" dir="ltr">Grass</td>
+                    <td class="s0" dir="ltr">Ground</td>
+                    <td class="s0" dir="ltr">Ice</td>
+                    <td class="s0" dir="ltr">Normal</td>
+                    <td class="s0" dir="ltr">Poison</td>
+                    <td class="s0" dir="ltr">Psychic</td>
+                    <td class="s0" dir="ltr">Rock</td>
+                    <td class="s0" dir="ltr">Steel</td>
+                    <td class="s0" dir="ltr">Water</td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s0" dir="ltr"></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s2" dir="ltr">0.8</td>
+                </tr>
+                <tr style='height:20px;'>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="s1" dir="ltr">1.25</td>
+                    <td></td>
+                    <td class="s2" dir="ltr">0.8</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
-</html>
 
+</html>
